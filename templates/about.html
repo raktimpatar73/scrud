@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for user in users %}
+<div class="container">
+    <h1 style="text-align:center;">{{ user['name'] }}</h1>
+    <hr>
+    <p>{{ user['about'] }}</p>
+    <p>
+    <b>Company:</b>
+    {{  user['company'] }}
+    </p>
+    <p>
+    <b>Address:</b>
+    {{  user['address'] }}
+    </p>
+    <p>
+    <b><small>Contact information:</small></b><br>
+    <small>{{ user['email'] }}</small><br>
+    <small>{{ user['website'] }}</small>
+    </p>
+{% endfor %}
+
+{% endblock %}

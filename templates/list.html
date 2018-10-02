@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if users[0] %}  
+ <div class="container">
+    <div span="right">  
+    <form action="/search"   method="GET" >  
+        <div style="margin-top: 30px; margin-bottom: 30px;">
+        <big><b>Search Reference:</b></big> 
+            <div class="row">
+                <div class="col-md-3"> 
+                    <select class="form-control" name="refer" required>  
+                        <option value="name">Name</option>  
+                        <option value="email">Email</option>  
+                        <option value="username">Username</option>  
+                        <option value="company">Company</option>
+                        <option value="website">Website</option> 
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" name="key" placeholder="Search" size="30" />
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary btn-sm" type="submit">Search</button>
+                </div>
+            </div>
+        </div>
+        
+          
+    </form>  
+    </div>  
+    <b><big style=" color:darkslategray;">USER LIST :</big></b>
+    <div style="margin-top:30px">  
+    <table class="table table-hover">  
+        <tr id="row">  
+            <th class="name">Name</th>  
+            <th class="email">Email</th>  
+            <th class="username">Username</th>  
+            <th class="company">Company</th>
+            <th class="website">Website</th> 
+            <th class="func1">Remove</th>  
+            <th class="func2">Modify</th>  
+        </tr>  
+    {% for user in users %}
+        <tr class="datas">    
+           
+            <td class="name"> <a href="/{{ user["username"] }}">{{ user["name"] }}</a></td> 
+            <td class="email">{{ user["email"] }}</td>  
+            <td class="username">{{ user["username"] }}</td>  
+            <td class="company">{{ user["company"] }}</td>
+            <td class="website">{{ user["website"] }}</td>
+            <td class="func1"><a href="./remove?_id={{ user['_id'] }}"><button type="submit" class="btn btn-danger btn-sm">DELETE</button></a></td>  
+            <td class="func1"><a href="./update?_id={{ user['_id'] }}"><button type="submit" class="btn btn-info btn-sm">EDIT</button></a></td>  
+        </tr> 
+         
+    {% endfor %}  
+    </table>  
+    {% else %}  
+        <h4 style="text-align: center;">No Users Yet !!</h4>  
+    {% endif %}  
+    {% endblock %}
+    </div>
+    </div>>

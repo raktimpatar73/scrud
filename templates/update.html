@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-3">
+    <div class="row">
+        <div class="mx-auto col-sm-6">
+                    <!-- form user info -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="mb-0">Edit User Information</h4>
+                        </div>
+                        <div class="card-body">
+                            <form class="form" role="form" autocomplete="off" method="POST" action="/action3">
+                                {% for user in users %}
+                                
+                                <input type="text" name="_id" value="{{ user['_id'] }}" hidden> 
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Name</label>
+                                    <div class="col-lg-9">
+                                        <input name="name" class="form-control" type="text" value="{{ user['name'] }}" placeholder="{{ user['name'] }}" autocomplete="off" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                                    <div class="col-lg-9">
+                                        <input name="email" class="form-control" type="email" value="{{ user['email'] }}" placeholder="{{ user['email'] }}" autocomplete="off" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Username</label>
+                                    <div class="col-lg-9">
+                                        <input name="username" class="form-control" type="text" value="{{ user['username'] }}" placeholder="{{ user['username'] }}" autocomplete="off" required>
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Company</label>
+                                    <div class="col-lg-9">
+                                        <input name="company" class="form-control" type="text" value="{{ user['company'] }}" placeholder="{{ user['company'] }}" autocomplete="off" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Website</label>
+                                    <div class="col-lg-9">
+                                        <input name="website" class="form-control" type="url" value="{{ user['website'] }}" placeholder="{{ user['website'] }}" autocomplete="off" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Address</label>
+                                    <div class="col-lg-9">
+                                        <input name="address" class="form-control" type="text" value="{{ user['address'] }}" placeholder="{{ user['address'] }}" autocomplete="off" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Tell something about yourself</label>
+                                        <div class="col-lg-9">
+                                            <textarea name="about" class="form-control" type="text" value="{{ user['about'] }}" autocomplete="off" rows="10" required>{{ user['about'] }}</textarea>
+                                        </div>
+                                </div>
+                                {% endfor %}
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label"></label>
+                                    <div class="col-lg-9">
+                                        <input type="submit" class="btn btn-success btn-md" value="Save Changes">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /form user info -->
+        </div>
+    </div>
+</div>
+{% endblock %}
