@@ -19,15 +19,15 @@ def redirect_url():
 def lists ():  
     #List all users
     users_list = users.find()  
-    a2="active"  
-    a1=" "
+    status_list="active"  
+    status_info=" "
     return render_template('list.html',a1=a1, a2=a2,users=users_list,t=title,h=heading)
 
 @app.route("/")
 def index():
     #Display user addition form
-    a1="active"
-    a2=" "
+    status_info="active"
+    status_list=" "
     return render_template('index.html', a1=a1, a2=a2)
 
 @app.route("/action", methods=['POST'])  
@@ -89,10 +89,7 @@ def search():
     #Searching a user with various references  
     key=request.values.get("key")  
     refer=request.values.get("refer")  
-    if(key=="_id"):  
-        users_list = users.find({refer:ObjectId(key)})  
-    else:  
-        users_list = users.find({refer:key})  
+    users_list = users.find({refer:key})  
     return render_template('searchlist.html',users=users_list,t=title,h=heading)
 
 @app.route("/<username>")
